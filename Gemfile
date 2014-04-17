@@ -50,3 +50,4 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'newrelic_rpm'
+gem 'bootstrap-sass', '~> 3.1.1'
