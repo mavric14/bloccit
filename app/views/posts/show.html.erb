@@ -10,6 +10,8 @@
     <% if @post.image? %>
       <%= image_tag( @post.image.url ) %>
     <% end %>
+    <%= render partial: "comments/comment", collection: @comments, locals: { topic: @topic, post: @post } %>
+    <%= render partial: "comments/form", locals: {topic: @topic, post: @post, comment: @comment} %>
    </div>
   <div class="col-md-4">
     <% if policy(@post).edit? %>
