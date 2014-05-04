@@ -22,13 +22,15 @@ end
 topics = Topic.all
 
 # Create Posts
-100.times do 
-  Post.create(
+50.times do 
+  post = Post.create(
     user:   users.sample,
     topic:  topics.sample,
     title:  Faker::Lorem.sentence,
     body:   Faker::Lorem.paragraph
   )
+  post.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+  post.update_rank
 end
 
 posts = Post.all
