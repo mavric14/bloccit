@@ -10,4 +10,8 @@ class TopicPolicy < ApplicationPolicy
   def update?
     create?
   end
+
+  def sho?
+    record.public? || user.present?
+  end
 end
