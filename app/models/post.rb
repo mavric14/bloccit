@@ -4,7 +4,8 @@ class Post < ActiveRecord::Base
   has_many :favorites, dependent: :destroy
   belongs_to :user
   belongs_to :topic
-   default_scope {order('rank DESC')}
+  default_scope {order('rank DESC')}
+  scope :visible_to, ->(user) { user ? all : joins(:topic).where('topics.public' => true) }
 
   validates :title, length: { minimum: 5}, presence: true
   validates :body, length: { minimum: 20}, presence: true
