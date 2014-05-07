@@ -12,6 +12,8 @@
     <% if @post.image? %>
       <%= image_tag( @post.image.url ) %>
     <% end %>
+    <hr/>
+    <h2 class='js-comments-count'><%= @comments.count %> Comments</h2>
     <%= render partial: "comments/comment", collection: @comments, locals: { topic: @topic, post: @post } %>
     <%= render partial: "comments/form", locals: {topic: @topic, post: @post, comment: @comment} %>
    </div>
