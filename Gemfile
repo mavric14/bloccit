@@ -10,9 +10,9 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'sqlite3'
   gem 'factory_girl_rails', '~> 4.0'
- # gem 'database_cleaner'
+  gem 'database_cleaner'
+  gem 'sqlite3'
 end
 
 gem 'sass-rails', '~> 4.0.2'
