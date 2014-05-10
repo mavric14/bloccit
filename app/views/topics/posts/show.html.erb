@@ -2,20 +2,28 @@
 <div class="row">
   <div class="col-md-8">
     <%= render partial: 'votes/voter', locals: { topic: @topic, post: @post } %>
+
     <h1><%=markdown @post.title %></h1>
+
       <small>
         <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
         submitted <%= time_ago_in_words(@post.created_at) %>
         <%= @post.user.name %>
       </small>
+
     <p><%=markdown @post.body %></p>
+
     <% if @post.image? %>
       <%= image_tag( @post.image.url ) %>
     <% end %>
+
     <hr/>
+
     <h2 class='js-comments-count'><%= @comments.count %> Comments</h2>
-    <%= render partial: "comments/comment", collection: @comments, locals: { topic: @topic, post: @post } %>
-    <%= render partial: "comments/form", locals: {topic: @topic, post: @post, comment: @comment} %>
+    <div class='js-comments'>
+       <%= render partial: 'comments/comment', collection: @comments  %>
+    </div>
+    <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
    </div>
   <div class="col-md-4">
     <% if policy(@post).edit? %>
